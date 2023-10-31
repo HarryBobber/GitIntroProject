@@ -15,7 +15,11 @@ public class Main {
             });
             temp.start();
         }
-        Thread.sleep(10000);
-        System.out.println(atomicInteger.toString());
+        while(true){
+            if(atomicInteger.get()>99999999){
+                System.out.println(atomicInteger);
+                break;
+            }
+        }
     }
 }
