@@ -9,13 +9,19 @@ public class Main {
             Thread temp = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for(int i=0; i<1000000; i++)
-                        atomicInteger.getAndAdd(1);
+                    for(int i=0; i<1000000; i++){
+
+                    }
+                    atomicInteger.getAndAdd(1000000);
                 }
             });
             temp.start();
         }
-        Thread.sleep(10000);
-        System.out.println(atomicInteger.toString());
+        while(true){
+            if(atomicInteger.get()>99999999){
+                System.out.println(atomicInteger);
+                break;
+            }
+        }
     }
 }
